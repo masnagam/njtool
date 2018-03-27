@@ -1,0 +1,38 @@
+{
+  "name": "njtool",
+  "version": "0.1.0",
+  "description": "Tool for nature.com users",
+  "main": "index.js",
+  "bin": {
+    "nature-tools": "bin/njtool"
+  },
+  "keywords": [
+    "nature",
+    "nature.com",
+    "journal",
+    "magazine",
+    "scrape",
+    "scraping",
+    "scraper",
+    "download",
+    "downloader",
+    "puppeteer"
+  ],
+  "author": "Masayuki Nagamachi <masayuki.nagamachi@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "caporal": "^0.10.0",
+    "chalk": "^2.3.2",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.21.0",
+    "node-fetch": "^2.1.1",
+    "promisepipe": "^2.1.2",
+    "puppeteer": "^1.2.0",
+    "sanitize-filename": "^1.6.1",
+    "sleep": "^5.1.1",
+    "stream-to-string": "^1.1.0"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
+  }
+}
