@@ -21,7 +21,11 @@ program
 program
   .command('scrape',
            'Scrape metadata in journal pages, and output as JSON')
-  .option('--show-window', 'Show the browser window for debugging',
+  .option('--show-window',
+          'Show the browser window for debugging',
+          program.BOOLEAN, false)
+  .option('--disable-sandbox',
+          'Run Chromium browser without the sandbox',
           program.BOOLEAN, false)
   .argument('<journals...>',
             'List of journal IDs represented as <name>:<volume>:<issue>',
@@ -65,6 +69,9 @@ program
           program.INTEGER, 30)
   .option('--show-window',
           'Show the browser window for debugging',
+          program.BOOLEAN, false)
+  .option('--disable-sandbox',
+          'Run Chromium browser without the sandbox',
           program.BOOLEAN, false)
   .action(async (args, options, logger) => {
     const journals = JSON.parse(
