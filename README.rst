@@ -1,14 +1,28 @@
-njtool
-======
+njtool - Tool for nature.com users
+==================================
 
 |version| |build| |dependency| |codacy| |maintainability| |test-coverage|
 
 ``njtool`` provides useful commands to operate on www.nature.com with
 `Puppeteer`_.
 
-See help for details of each command::
 
-  $ njtool help
+USAGE
+-----
+
+A command below fetches PDF files of articles in "Nature Volume 555 Issue 7694",
+and saves them into /journals/nature/2018-03-01_555_7694::
+
+  $ njtool scrape nature:555:7695 | \
+      njtool download -u your@email.address -p your_password -o /journals
+
+Downloading multiple journals are supported::
+
+  $ njtool scrape nature:555:7695 nature:555:7696 | \
+      njtool download -u your@email.address -p your_password -o /journals
+
+At this moment, ``njtool`` supports only Nature.  I have no plan to support
+other journals.  Because I have no plan to subscribe others.
 
 ``njtool`` works fine on macOS.  It's recommended to use ``caffeinate`` in order
 to prevent the system from sleeping when you run ``njtool download`` which
@@ -17,6 +31,10 @@ typically takes a long time.
 ``njtool`` works fine on Linux, but you may need to run commands with the
 ``--disable-sandbox`` option.  Probably, it also works on Windows, but I haven't
 confirmed that yet.
+
+See help for details of each command::
+
+  $ njtool help
 
 
 TODO
