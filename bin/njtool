@@ -61,9 +61,6 @@ program
   .option('--retry-interval <sec>',
           'Retry interval time in seconds',
           program.INTEGER, 5)
-  .option('--timeout <sec>',
-          'Maximum time in seconds allowed for downloading a PDF file',
-          program.INTEGER, 300)
   .option('--sleep <sec>',
           'Time in seconds to sleep between article downloads',
           program.INTEGER, 0)
