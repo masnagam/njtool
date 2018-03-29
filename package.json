@@ -28,7 +28,6 @@
     "promisepipe": "^2.1.2",
     "puppeteer": "^1.2.0",
     "sanitize-filename": "^1.6.1",
-    "sleep": "^5.1.1",
     "stream-to-string": "^1.1.0"
   },
   "engines": {
