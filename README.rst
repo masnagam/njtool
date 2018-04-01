@@ -1,7 +1,8 @@
 njtool - Tool for nature.com users
 ==================================
 
-|version| |build| |dependency| |codacy| |maintainability| |test-coverage|
+|version| |linux-build| |windows-build| |dependency|
+|codacy| |maintainability| |test-coverage|
 
 ``njtool`` provides useful commands to operate on www.nature.com with
 `Puppeteer`_.
@@ -48,10 +49,14 @@ details.
    https://img.shields.io/npm/v/njtool.svg
    :target: https://www.npmjs.com/package/njtool
    :alt: Version
-.. |build| image::
+.. |linux-build| image::
    https://travis-ci.org/masnagam/njtool.svg?branch=master
    :target: https://travis-ci.org/masnagam/njtool
-   :alt: Build
+   :alt: Linux Build
+.. |windows-build| image::
+   https://ci.appveyor.com/api/projects/status/uwg3oqw5vw6eb5ge/branch/master?svg=true
+   :target: https://ci.appveyor.com/project/masnagam/njtool/branch/master
+   :alt: Windows Build
 .. |dependency| image::
    https://gemnasium.com/badges/github.com/masnagam/njtool.svg
    :target: https://gemnasium.com/github.com/masnagam/njtool
