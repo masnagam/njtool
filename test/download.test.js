@@ -5,6 +5,7 @@
 
 const chai = require('chai');
 const sinon = require('sinon');
+const path = require('path');
 const proxyquire = require('proxyquire');
 
 const expect = chai.expect;
@@ -47,7 +48,7 @@ describe('Downloader', () => {
     options = {
       username: 'username',
       password: 'password',
-      outdir: '/outdir',
+      outdir: 'outdir',
       retry: 4,
       retryInterval: 5,
       sleep: 0,
@@ -110,32 +111,35 @@ describe('Downloader', () => {
       const downloader = new Downloader(options, logger);
       await downloader.download(journals);
       expect(stubs.mkdirp.sync)
-        .to.have.been.calledWith('/outdir/nature/2018-04-01_1_2');
+        .to.have.been.calledWith(
+          path.join(options.outdir, 'nature', '2018-04-01_1_2'));
     });
 
     it('should save pdf files', async () => {
       const downloader = new Downloader(options, logger);
       await downloader.download(journals);
       expect(stubs.fs.writeFileSync).to.have.been.calledWith(
-        '/outdir/nature/2018-04-01_1_2/01 article 1.pdf', Buffer.from('1.pdf'));
+        path.join(options.outdir, 'nature', '2018-04-01_1_2', '01 article 1.pdf'),
+        Buffer.from('1.pdf'));
       expect(stubs.fs.writeFileSync).to.have.been.calledWith(
-        '/outdir/nature/2018-04-01_1_2/02 article 2.pdf', Buffer.from('2.pdf'));
+        path.join(options.outdir, 'nature', '2018-04-01_1_2', '02 article 2.pdf'),
+        Buffer.from('2.pdf'));
     });
 
     it('should update the cursor file', async () => {
       const downloader = new Downloader(options, logger);
       await downloader.download(journals);
       expect(stubs.fs.writeFileSync).to.have.been.calledWith(
-        '/outdir/nature/2018-04-01_1_2/cursor', '0');
+        path.join(options.outdir, 'nature', '2018-04-01_1_2', 'cursor'), '0');
       expect(stubs.fs.writeFileSync).to.have.been.calledWith(
-        '/outdir/nature/2018-04-01_1_2/cursor', '1');
+        path.join(options.outdir, 'nature', '2018-04-01_1_2', 'cursor'), '1');
     });
 
     it('should remove the cursor file', async () => {
       const downloader = new Downloader(options, logger);
       await downloader.download(journals);
       expect(stubs.fs.unlinkSync).to.have.been.calledWith(
-        '/outdir/nature/2018-04-01_1_2/cursor');
+        path.join(options.outdir, 'nature', '2018-04-01_1_2', 'cursor'));
     });
 
     context('when the disableSandbox option is specified', () => {
@@ -340,7 +344,8 @@ describe('Downloader', () => {
 
     context('when the cursor file exists', async () => {
       beforeEach(() => {
-        stubs.fs.existsSync.withArgs('/outdir/nature/2018-04-01_1_2/cursor')
+        stubs.fs.existsSync.withArgs(
+          path.join(options.outdir, 'nature', '2018-04-01_1_2', 'cursor'))
           .returns(true);
         stubs.fs.readFileSync.returns('1');
       })
