@@ -19,6 +19,7 @@
     "puppeteer"
   ],
   "author": "Masayuki Nagamachi <masayuki.nagamachi@gmail.com>",
+  "repository": "masnagam/njtool",
   "license": "MIT",
   "engines": {
     "node": ">= 8.0.0"
