@@ -1,7 +1,7 @@
 njtool - Tool for nature.com users
 ==================================
 
-|version| |linux-build| |windows-build| |dependency|
+|version| |build| |windows-build| |dependency|
 |codacy| |maintainability| |test-coverage|
 
 ``njtool`` provides useful commands to operate on www.nature.com with
@@ -49,7 +49,7 @@ details.
    https://img.shields.io/npm/v/njtool.svg
    :target: https://www.npmjs.com/package/njtool
    :alt: Version
-.. |linux-build| image::
+.. |build| image::
    https://travis-ci.org/masnagam/njtool.svg?branch=master
    :target: https://travis-ci.org/masnagam/njtool
    :alt: Linux Build
