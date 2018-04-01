@@ -13,7 +13,7 @@ USAGE
 A command below fetches PDF files of articles in "Nature Volume 555 Issue 7694",
 and saves them into /journals/nature/2018-03-01_555_7694::
 
-  $ njtool scrape nature:555:7695 | \
+  $ njtool scrape nature:555:7694 | \
       njtool download -u your@email.address -p your_password -o /journals
 
 Downloading multiple journals are supported::
@@ -35,13 +35,6 @@ confirmed that yet.
 See help for details of each command::
 
   $ njtool help
-
-
-TODO
-----
-
-* Writing help
-* Writing tests
 
 
 License
