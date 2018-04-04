@@ -30,13 +30,13 @@ $ njtool scrape nature:555:7695 nature:555:7696 | \
 At this moment, `njtool` supports only Nature.  I have no plan to support other
 journals.  Because I have no plan to subscribe others.
 
-`njtool` works fine on macOS.  It's recommended to use ``caffeinate`` in order
-to prevent the system from sleeping when you run `njtool download` which
-typically takes a long time.
+`njtool` works fine on macOS, Linux and Windows.
 
-`njtool` works fine on Linux, but you may need to run commands with the
-`--disable-sandbox` option.  Probably, it also works on Windows, but I haven't
-confirmed that yet.
+It's recommended for macOS users to use `caffeinate` in order to prevent the
+system from sleeping when you run `njtool download` which typically takes a long
+time.
+
+Linux users may need to run commands with the `--disable-sandbox` option.
 
 See help for details of each command:
 
