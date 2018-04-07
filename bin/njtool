@@ -5,114 +5,12 @@
 
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-const program = require('caporal');
-const streamToString = require('stream-to-string');
-
+const program = require('commander');
 const packageJson = require('../package.json');
-const Journal = require('..').Journal;
-const Downloader = require('..').Downloader;
 
 program
   .version(packageJson.version)
-  .description(packageJson.description);
-
-program
-  .command(
-    'scrape',
-    'Scrape metadata in journal pages, and output as JSON')
-  .option(
-    '--show-window',
-    'Show the browser window for debugging',
-    program.BOOLEAN, false)
-  .option(
-    '--disable-sandbox',
-    'Run Chromium browser without the sandbox',
-    program.BOOLEAN, false)
-  .argument(
-    '<journals...>',
-    'List of journal IDs represented as <name>:<volume>:<issue>',
-    Journal.from)
-  .action(async (args, options, logger) => {
-    const journals = await Promise.all(args.journals.map(async (journal) => {
-      return await journal.scrape(options);
-    }));
-    console.log(JSON.stringify(journals));
-  });
-
-program
-  .command(
-    'download',
-    'Download PDF files of articles')
-  .help(
-    `This command loads each journal page and downloads PDF files of articles
-     included in the journal page.
-
-     PDF files linked from a journal page are saved into a folder created in the
-     <outdir> folder with a name like "nature/<date>_<volume>_<issue>". Each PDF
-     file is saved with a name like "<index> <title>.pdf".
-
-     While this command is downloading articles in a journal, a special file
-     named "cursor" is created in the journal folder. The cursor file contains
-     the number of the index of the currently downloading article in order to be
-     able to restart to download from it after the command has terminated for
-     some error, or by Ctrl-C. The cursor file is removed when articles are
-     downloaded successfully.`
-      .split('\n').map((line) => line.trim()).join('\n'),
-    { name: 'DESCRIPTION' })
-  .option(
-    '-u, --username <username>',
-    'Username',
-    program.STRING, undefined, true)
-  .option(
-    '-p, --password <password>',
-    'Password',
-    program.STRING, undefined, true)
-  .option(
-    '-o, --outdir <path-to-dir>',
-    'Path to the output dir',
-    (value) => {
-      const outdir = path.resolve(process.cwd(), value);
-      if (!fs.existsSync(outdir)) {
-        throw new Error(`No such directory: ${outdir}`);
-      }
-      return outdir;
-    }, undefined, true)
-  .option(
-    '--retry <num>',
-    'Retry <num> times if failed to download a PDF file',
-    program.INTEGER, 4)
-  .option(
-    '--retry-interval <sec>',
-    'Retry interval time in seconds',
-    program.INTEGER, 5)
-  .option(
-    '--sleep <sec>',
-    'Time in seconds to sleep between article downloads',
-    program.INTEGER, 0)
-  .option(
-    '--show-window',
-    'Show the browser window for debugging',
-    program.BOOLEAN, false)
-  .option(
-    '--disable-sandbox',
-    'Run Chromium browser without the sandbox',
-    program.BOOLEAN, false)
-  .action(async (args, options, logger) => {
-    const journals = JSON.parse(
-      await streamToString(process.stdin)
-    ).filter((journal) => journal.error === undefined);
-    const downloader = new Downloader(options, logger);
-    let abort_count = 0;
-    process.on('SIGINT', () => {  // Ctrl-C
-      if (!downloader || abort_count > 2) {
-        process.exit(1);
-      }
-      downloader.abort();
-      abort_count++;
-    });
-    return await downloader.download(journals);
-  });
-
-program.parse(process.argv);
+  .description(packageJson.description)
+  .command('scrape', 'Scrape metadata in journal pages, and output as JSON')
+  .command('download', 'Download PDF files of articles')
+  .parse(process.argv);

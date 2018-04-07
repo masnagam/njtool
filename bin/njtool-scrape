@@ -1,0 +1,34 @@
+#!/usr/bin/env node
+
+// This file is distributed under the MIT license.
+// See LICENSE file in the project root for details.
+
+'use strict';
+
+const program = require('commander');
+const Journal = require('..').Journal;
+
+const HELP = `
+  Arguments:
+
+    ids  List of journal IDs represented as <name>:<volume>:<issue>
+`;
+
+program
+  .description(
+    'Scrape metadata in journal pages, and output as JSON')
+  .option(
+    '--show-window',
+    'Show the browser window for debugging')
+  .option(
+    '--disable-sandbox',
+    'Run Chromium browser without the sandbox')
+  .arguments(
+    '<ids...>')
+  .on('--help', () => console.log(HELP))
+  .action(async (ids, options) => {
+    const metadata = await Promise.all(
+      Journal.from(ids).map(async (j) => await j.scrape(options)));
+    console.log(JSON.stringify(metadata));
+  })
+  .parse(process.argv);
