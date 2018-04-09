@@ -77,10 +77,10 @@ program
     'Time in seconds to sleep between article downloads',
     0)
   .option(
-    '--show-window',
-    'Show the browser window for debugging')
+    '--no-headless',
+    'Run Chromium browser in the window mode for debugging')
   .option(
-    '--disable-sandbox',
+    '--no-sandbox',
     'Run Chromium browser without the sandbox')
   .on('--help', () => console.log(HELP))
   .action(async (options) => {

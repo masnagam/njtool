@@ -11,20 +11,20 @@ const Journal = require('..').Journal;
 const HELP = `
   Arguments:
 
-    ids  List of journal IDs represented as <name>:<volume>:<issue>
+    journal-ids  List of journal IDs represented as <name>:<volume>:<issue>
 `;
 
 program
   .description(
     'Scrape metadata in journal pages, and output as JSON')
   .option(
-    '--show-window',
-    'Show the browser window for debugging')
+    '--no-headless',
+    'Run Chromium browser in window mode for debugging')
   .option(
-    '--disable-sandbox',
+    '--no-sandbox',
     'Run Chromium browser without the sandbox')
   .arguments(
-    '<ids...>')
+    '<journal-ids...>')
   .on('--help', () => console.log(HELP))
   .action(async (ids, options) => {
     const metadata = await Promise.all(

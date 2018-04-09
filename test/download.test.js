@@ -52,8 +52,8 @@ describe('Downloader', () => {
       retry: 4,
       retryInterval: 5,
       sleep: 0,
-      showWindow: false,
-      disableSandbox: false
+      headless: true,
+      sandbox: true
     };
 
     logger = {
@@ -142,9 +142,9 @@ describe('Downloader', () => {
         path.join(options.outdir, 'nature', '2018-04-01_1_2', 'cursor'));
     });
 
-    context('when the disableSandbox option is specified', () => {
+    context('when --no-sandbox is specified', () => {
       beforeEach(() => {
-        options.disableSandbox = true;
+        options.sandbox = false;
       });
 
       it('should call puppeteer.launch with the args option', async () => {

@@ -162,8 +162,8 @@ describe('Journal', () => {
     it('should call puppeteer.launch with the headless option', async () => {
       const journal = new Journal('nature:1:2');
       await journal.scrape({
-        showWindow: true,
-        disableSandbox: true
+        headless: false,
+        sandbox: false
       });
       expect(stubs.puppeteer.launch).to.have.been.calledWith({
         headless: false,

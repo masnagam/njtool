@@ -10,7 +10,7 @@
 
 `njtool` provides useful commands to operate on www.nature.com with [Puppeteer].
 
-## USAGE
+## How to use
 
 A command below fetches PDF files of articles in "Nature Volume 555 Issue 7694",
 and saves them into /journals/nature/2018-03-01_555_7694:
@@ -36,7 +36,11 @@ It's recommended for macOS users to use `caffeinate` in order to prevent the
 system from sleeping when you run `njtool download` which typically takes a long
 time.
 
-Linux users may need to run commands with the `--disable-sandbox` option.
+```
+$ njtool scrape nature:555:7697 | caffeinate -si njtool download ...
+```
+
+Linux users may need to run commands with the `--no-sandbox` option.
 
 See help for details of each command:
 
