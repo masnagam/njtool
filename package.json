@@ -1,6 +1,6 @@
 {
   "name": "njtool",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Tool for nature.com users",
   "main": "index.js",
   "bin": {
