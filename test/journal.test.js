@@ -18,8 +18,8 @@ const stubs = {
 };
 
 // Classes below are used for making stubs
-const Browser = require('puppeteer/lib/Browser');
-const Page = require('puppeteer/lib/Page');
+const { Browser } = require('puppeteer/lib/Browser');
+const { Page } = require('puppeteer/lib/Page');
 
 const Journal = proxyquire('../lib/journal', stubs);
 
