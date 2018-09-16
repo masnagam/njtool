@@ -3,7 +3,6 @@
 [![Version][npm-version]][npm-site]
 [![Build Status][build-status]][build-site]
 [![Windows Build Status][windows-build-status]][windows-build-site]
-[![Dependency Status][dependency-status]][dependency-site]
 [![Codacy Status][codacy-status]][codacy-site]
 [![Maintainability Status][maintainability-status]][maintainability-site]
 [![Coverage Status][coverage-status]][coverage-site]
@@ -37,7 +36,7 @@ system from sleeping when you run `njtool download` which typically takes a long
 time.
 
 ```
-$ njtool scrape nature:555:7697 | caffeinate -si njtool download ...
+$ njtool scrape nature:555:7697 | caffeinate -i njtool download ...
 ```
 
 Linux users may need to run commands with the `--no-sandbox` option.
@@ -59,8 +58,6 @@ details.
 [build-site]: https://travis-ci.org/masnagam/njtool
 [windows-build-status]: https://ci.appveyor.com/api/projects/status/uwg3oqw5vw6eb5ge/branch/master?svg=true
 [windows-build-site]: https://ci.appveyor.com/project/masnagam/njtool/branch/master
-[dependency-status]: https://gemnasium.com/badges/github.com/masnagam/njtool.svg
-[dependency-site]: https://gemnasium.com/github.com/masnagam/njtool
 [codacy-status]: https://api.codacy.com/project/badge/Grade/84d4bc5c66524277aa6a13a43a6395ef
 [codacy-site]: https://www.codacy.com/app/masnagam/njtool?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=masnagam/njtool&amp;utm_campaign=Badge_Grade
 [maintainability-status]: https://api.codeclimate.com/v1/badges/520d222651cf6841a61d/maintainability
