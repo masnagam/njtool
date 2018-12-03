@@ -6,6 +6,7 @@
 [![Codacy Status][codacy-status]][codacy-site]
 [![Maintainability Status][maintainability-status]][maintainability-site]
 [![Coverage Status][coverage-status]][coverage-site]
+[![Known Vulnerabilities][snyk-status]][snyk-site]
 
 `njtool` provides useful commands to operate on www.nature.com with [Puppeteer].
 
@@ -64,5 +65,7 @@ details.
 [maintainability-site]: https://codeclimate.com/github/masnagam/njtool/maintainability
 [coverage-status]: https://api.codeclimate.com/v1/badges/520d222651cf6841a61d/test_coverage
 [coverage-site]: https://codeclimate.com/github/masnagam/njtool/test_coverage
+[snyk-status]: https://snyk.io/test/github/masnagam/njtool/badge.svg?targetFile=package.json
+[snyk-site]: https://snyk.io/test/github/masnagam/njtool?targetFile=package.json
 [Puppeteer]: https://github.com/GoogleChrome/puppeteer
 [LICENSE]: ./LICENSE
