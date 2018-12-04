@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+
+// This file is distributed under the MIT license.
+// See LICENSE file in the project root for details.
+
+'use strict';
+
+const program = require('commander');
+const Volume = require('..').Volume;
+
+const HELP = `
+  Arguments:
+
+    volume-ids  List of journal volume IDs represented as <name>:<volume>
+`;
+
+program
+  .description(
+    'Scrape metadata in volume pages, and output as JSON')
+  .option(
+    '--only-ids',
+    'Output a list of journal IDs')
+  .option(
+    '--no-headless',
+    'Run Chromium browser in window mode for debugging')
+  .option(
+    '--no-sandbox',
+    'Run Chromium browser without the sandbox')
+  .arguments(
+    '<volume-ids...>')
+  .on('--help', () => console.log(HELP))
+  .action(async (ids, options) => {
+    const volumes = await Promise.all(
+      Volume.from(ids).map(async (v) => await v.scrape(options)));
+    if (options.onlyIds) {
+      console.log(JSON.stringify(
+        volumes
+          .filter((v) => v.error === undefined)
+          .reduce((acc, v) => {
+            return acc.concat(
+              v.issues.map((i) => `${v.name}:${v.volume}:${i.id}`));
+          }, [])
+          .sort()
+      ));
+    } else {
+      console.log(JSON.stringify(volumes));
+    }
+  })
+  .parse(process.argv);

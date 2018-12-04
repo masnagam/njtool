@@ -15,15 +15,22 @@
 A command below fetches PDF files of articles in "Nature Volume 555 Issue 7694",
 and saves them into /journals/nature/2018-03-01_555_7694:
 
-```
-$ njtool scrape nature:555:7694 | \
+```console
+$ njtool scrape journal nature:555:7694 | \
     njtool download -u your@email.address -p your_password -o /journals
 ```
 
 Downloading multiple journals are supported:
 
+```console
+$ njtool scrape journal nature:555:7695 nature:555:7696 | \
+    njtool download -u your@email.address -p your_password -o /journals
 ```
-$ njtool scrape nature:555:7695 nature:555:7696 | \
+
+Downloading journals of specific volumes:
+
+```console
+$ njtool scrape volume nature:555 nature:556 | njtool scrape journal | \
     njtool download -u your@email.address -p your_password -o /journals
 ```
 
@@ -36,15 +43,15 @@ It's recommended for macOS users to use `caffeinate` in order to prevent the
 system from sleeping when you run `njtool download` which typically takes a long
 time.
 
-```
-$ njtool scrape nature:555:7697 | caffeinate -i njtool download ...
+```console
+$ njtool scrape journal nature:555:7697 | caffeinate -i njtool download ...
 ```
 
 Linux users may need to run commands with the `--no-sandbox` option.
 
 See help for details of each command:
 
-```
+```console
 $ njtool help
 ```
 

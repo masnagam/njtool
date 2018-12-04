@@ -6,29 +6,14 @@
 'use strict';
 
 const program = require('commander');
-const Journal = require('..').Journal;
-
-const HELP = `
-  Arguments:
-
-    journal-ids  List of journal IDs represented as <name>:<volume>:<issue>
-`;
 
 program
   .description(
+    'Scrape metadata and output as JSON')
+  .command(
+    'volume <volume-ids>',
+    'Scrape metadata in volume pages, and output as JSON')
+  .command(
+    'journal <journal-ids...>',
     'Scrape metadata in journal pages, and output as JSON')
-  .option(
-    '--no-headless',
-    'Run Chromium browser in window mode for debugging')
-  .option(
-    '--no-sandbox',
-    'Run Chromium browser without the sandbox')
-  .arguments(
-    '<journal-ids...>')
-  .on('--help', () => console.log(HELP))
-  .action(async (ids, options) => {
-    const metadata = await Promise.all(
-      Journal.from(ids).map(async (j) => await j.scrape(options)));
-    console.log(JSON.stringify(metadata));
-  })
   .parse(process.argv);
