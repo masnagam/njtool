@@ -11,22 +11,6 @@ const program = require('commander');
 const streamToString = require('stream-to-string');
 const Downloader = require('..').Downloader;
 
-// njtool-download takes no arguments, but, at this moment, Commander.js
-// supports only commands which take arguments.  program.parseArgs() are
-// overridden here in order to invokde a function passed to program.action().
-//
-// PR #778 can fix this issue.
-// See https://github.com/tj/commander.js/pull/778 for details.
-program.parseArgs = (args, unknown) => {
-  program.emit('command:*', args, unknown);
-  // For avoiding a TypeError error, assign the args property if it is missing.
-  // See L477 in node_modules/commander/index.js.
-  if (this.args === undefined) {
-    this.args = [];
-  }
-  return this;
-};
-
 const HELP = `
   Description:
 
