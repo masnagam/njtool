@@ -30,7 +30,8 @@ $ njtool scrape journal nature:555:7695 nature:555:7696 | \
 Downloading journals of specific volumes:
 
 ```console
-$ njtool scrape volume nature:555 nature:556 | njtool scrape journal | \
+$ njtool scrape volume --only-ids nature:555 nature:556 | \
+    njtool scrape journal | \
     njtool download -u your@email.address -p your_password -o /journals
 ```
 
