@@ -1,4 +1,6 @@
-# njtool - Tool for nature.com users
+# njtool
+
+> Tool for nature.com users
 
 [![Version][npm-version]][npm-site]
 [![Build Status][build-status]][build-site]
@@ -20,19 +22,34 @@ $ njtool scrape journal nature:555:7694 | \
     njtool download -u your@email.address -p your_password -o /journals
 ```
 
+You can use the following environment variables instead of specified options in
+`download` subcommand:
+
+* `NJTOOL_NATURE_USERNAME`
+* `NJTOOL_NATURE_PASSWORD`
+* `NJTOOL_NATURE_OUTDIR`
+
+```console
+$ cat .envrc
+export NJTOOL_NATURE_USERNAME="your@email.address"
+export NJTOOL_NATURE_PASSWORD="your_password"
+export NJTOOL_NATURE_OUTDIR="/journals"
+
+$ njtool scrape journal nature:555:7694 | njtool download
+```
+
 Downloading multiple journals are supported:
 
 ```console
 $ njtool scrape journal nature:555:7695 nature:555:7696 | \
-    njtool download -u your@email.address -p your_password -o /journals
+    njtool download
 ```
 
 Downloading journals of specific volumes:
 
 ```console
 $ njtool scrape volume --only-ids nature:555 nature:556 | \
-    njtool scrape journal | \
-    njtool download -u your@email.address -p your_password -o /journals
+    njtool scrape journal | njtool download
 ```
 
 At this moment, `njtool` supports only Nature.  I have no plan to support other

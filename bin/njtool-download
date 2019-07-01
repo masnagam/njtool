@@ -27,6 +27,17 @@ const HELP = `
     able to restart to download from it after the command has terminated for
     some error, or by Ctrl-C. The cursor file is removed when articles are
     downloaded successfully.
+
+  Environment Variables:
+
+    NJTOOL_NATURE_USERNAME:
+      Username used for logging in to www.nature.com
+
+    NJTOOL_NATURE_PASSWORD:
+      Password used for logging in to www.nature.com
+
+    NJTOOL_NATURE_OUTDIR:
+      Path to an output directory where downloaded files will be stored
 `;
 
 program
@@ -34,20 +45,14 @@ program
     'Download PDF files of articles')
   .option(
     '-u, --username <username>',
-    'Username [Required]')
+    'Username (default: $NJTOOL_NATURE_USERNAME)')
   .option(
     '-p, --password <password>',
-    'Password [Required]')
+    'Password (default: $NJTOOL_NATURE_PASSWORD')
   .option(
     '-o, --outdir <path-to-dir>',
-    'Path to the output dir [Required]',
-    (value) => {
-      const outdir = path.resolve(process.cwd(), value);
-      if (!fs.existsSync(outdir)) {
-        throw new Error(`No such directory: ${outdir}`);
-      }
-      return outdir;
-    })
+    'Path to the output dir (default: $NJTOOL_NATURE_OUTDIR)',
+    (value) => path.resolve(process.cwd(), value))
   .option(
     '--retry <num>',
     'Retry <num> times if failed to download a PDF file',
@@ -69,16 +74,28 @@ program
   .on('--help', () => console.log(HELP))
   .action(async (options) => {
     if (!options.username) {
-      console.error('-u is required');
-      process.exit(1);
+      if (process.env.NJTOOL_NATURE_USERNAME === undefined) {
+        console.error('-u is required');
+        process.exit(1);
+      }
+      options.username = process.env.NJTOOL_NATURE_USERNAME;
     }
     if (!options.password) {
-      console.error('-p is required');
-      process.exit(1);
+      if (process.env.NJTOOL_NATURE_PASSWORD === undefined) {
+        console.error('-p is required');
+        process.exit(1);
+      }
+      options.password = process.env.NJTOOL_NATURE_PASSWORD;
     }
     if (!options.outdir) {
-      console.error('-o is required');
-      process.exit(1);
+      if (process.env.NJTOOL_NATURE_OUTDIR === undefined) {
+        console.error('-o is required');
+        process.exit(1);
+      }
+      options.outdir = process.env.NJTOOL_NATURE_OUTDIR;
+    }
+    if (!fs.existsSync(options.outdir)) {
+      throw new Error(`No such directory: ${options.outdir}`);
     }
     const json = await streamToString(process.stdin);
     const journals = JSON.parse(json).filter((j) => j.error === undefined);
