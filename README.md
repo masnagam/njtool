@@ -80,8 +80,8 @@ details.
 
 [npm-version]: https://img.shields.io/npm/v/njtool.svg
 [npm-site]: https://www.npmjs.com/package/njtool
-[build-status]: https://travis-ci.org/masnagam/njtool.svg?branch=master
-[build-site]: https://travis-ci.org/masnagam/njtool
+[build-status]: https://travis-ci.com/masnagam/njtool.svg?branch=master
+[build-site]: https://travis-ci.com/masnagam/njtool
 [windows-build-status]: https://ci.appveyor.com/api/projects/status/uwg3oqw5vw6eb5ge/branch/master?svg=true
 [windows-build-site]: https://ci.appveyor.com/project/masnagam/njtool/branch/master
 [codacy-status]: https://api.codacy.com/project/badge/Grade/84d4bc5c66524277aa6a13a43a6395ef
