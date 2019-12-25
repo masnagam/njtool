@@ -112,17 +112,17 @@ describe('Downloader', () => {
       await downloader.download(journals);
       expect(stubs.mkdirp.sync)
         .to.have.been.calledWith(
-          path.join(options.outdir, 'nature', '2018-04-01_1_2'));
+          path.join(options.outdir, 'nature', '1', '2'));
     });
 
     it('should save pdf files', async () => {
       const downloader = new Downloader(options, logger);
       await downloader.download(journals);
       expect(stubs.fs.writeFileSync).to.have.been.calledWith(
-        path.join(options.outdir, 'nature', '2018-04-01_1_2', '01 article 1.pdf'),
+        path.join(options.outdir, 'nature', '1', '2', '01 article 1.pdf'),
         Buffer.from('1.pdf'));
       expect(stubs.fs.writeFileSync).to.have.been.calledWith(
-        path.join(options.outdir, 'nature', '2018-04-01_1_2', '02 article 2.pdf'),
+        path.join(options.outdir, 'nature', '1', '2', '02 article 2.pdf'),
         Buffer.from('2.pdf'));
     });
 
@@ -130,16 +130,16 @@ describe('Downloader', () => {
       const downloader = new Downloader(options, logger);
       await downloader.download(journals);
       expect(stubs.fs.writeFileSync).to.have.been.calledWith(
-        path.join(options.outdir, 'nature', '2018-04-01_1_2', 'cursor'), '0');
+        path.join(options.outdir, 'nature', '1', '2', 'cursor'), '0');
       expect(stubs.fs.writeFileSync).to.have.been.calledWith(
-        path.join(options.outdir, 'nature', '2018-04-01_1_2', 'cursor'), '1');
+        path.join(options.outdir, 'nature', '1', '2', 'cursor'), '1');
     });
 
     it('should remove the cursor file', async () => {
       const downloader = new Downloader(options, logger);
       await downloader.download(journals);
       expect(stubs.fs.unlinkSync).to.have.been.calledWith(
-        path.join(options.outdir, 'nature', '2018-04-01_1_2', 'cursor'));
+        path.join(options.outdir, 'nature', '1', '2', 'cursor'));
     });
 
     context('when --no-sandbox is specified', () => {
@@ -345,7 +345,7 @@ describe('Downloader', () => {
     context('when the cursor file exists', async () => {
       beforeEach(() => {
         stubs.fs.existsSync.withArgs(
-          path.join(options.outdir, 'nature', '2018-04-01_1_2', 'cursor'))
+          path.join(options.outdir, 'nature', '1', '2', 'cursor'))
           .returns(true);
         stubs.fs.readFileSync.returns('1');
       })
