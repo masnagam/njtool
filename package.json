@@ -18,7 +18,7 @@
     "downloader",
     "puppeteer"
   ],
-  "author": "Masayuki Nagamachi <masayuki.nagamachi@gmail.com>",
+  "author": "Masayuki Nagamachi <masnagam@gmail.com>",
   "repository": "masnagam/njtool",
   "license": "MIT",
   "engines": {
