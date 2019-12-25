@@ -18,7 +18,7 @@ const HELP = `
     included in the journal page.
 
     PDF files linked from a journal page are saved into a folder created in the
-    <outdir> folder with a name like "nature/<date>_<volume>_<issue>". Each PDF
+    <outdir> folder with a name like "nature/<volume>/<issue>". Each PDF
     file is saved with a name like "<index> <title>.pdf".
 
     While this command is downloading articles in a journal, a special file
