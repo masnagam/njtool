@@ -27,7 +27,7 @@
   "dependencies": {
     "chalk": "^3.0.0",
     "commander": "^4.0.1",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^1.0.3",
     "moment": "^2.24.0",
     "puppeteer": "^2.0.0",
     "sanitize-filename": "^1.6.3",
