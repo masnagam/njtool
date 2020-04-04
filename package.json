@@ -25,7 +25,7 @@
     "node": ">= 8.0.0"
   },
   "dependencies": {
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "commander": "^5.0.0",
     "mkdirp": "^1.0.3",
     "moment": "^2.24.0",
