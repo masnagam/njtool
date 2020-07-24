@@ -2,11 +2,10 @@
 
 > Tool for nature.com users
 
-[![Version][npm-version]][npm-site]
-[![build](https://github.com/masnagam/njtool/workflows/build/badge.svg)](https://github.com/masnagam/njtool/actions?workflow=build)
-[![Codacy Status][codacy-status]][codacy-site]
-[![Maintainability Status][maintainability-status]][maintainability-site]
-[![Coverage Status][coverage-status]][coverage-site]
+[![npm](https://img.shields.io/npm/v/njtool)](https://www.npmjs.com/package/njtool)
+[![CI](https://github.com/masnagam/njtool/workflows/CI/badge.svg)](https://github.com/masnagam/njtool/actions?query=workflow%3ACI)
+[![Maintainability](https://api.codeclimate.com/v1/badges/520d222651cf6841a61d/maintainability)](https://codeclimate.com/github/masnagam/njtool/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/520d222651cf6841a61d/test_coverage)](https://codeclimate.com/github/masnagam/njtool/test_coverage)
 
 `njtool` provides useful commands to operate on www.nature.com with [Puppeteer].
 
@@ -76,13 +75,5 @@ $ njtool help
 This software is distributed under the MIT license.  See [LICENSE] file for
 details.
 
-[npm-version]: https://img.shields.io/npm/v/njtool.svg
-[npm-site]: https://www.npmjs.com/package/njtool
-[codacy-status]: https://api.codacy.com/project/badge/Grade/84d4bc5c66524277aa6a13a43a6395ef
-[codacy-site]: https://www.codacy.com/app/masnagam/njtool?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=masnagam/njtool&amp;utm_campaign=Badge_Grade
-[maintainability-status]: https://api.codeclimate.com/v1/badges/520d222651cf6841a61d/maintainability
-[maintainability-site]: https://codeclimate.com/github/masnagam/njtool/maintainability
-[coverage-status]: https://api.codeclimate.com/v1/badges/520d222651cf6841a61d/test_coverage
-[coverage-site]: https://codeclimate.com/github/masnagam/njtool/test_coverage
 [Puppeteer]: https://github.com/GoogleChrome/puppeteer
 [LICENSE]: ./LICENSE
