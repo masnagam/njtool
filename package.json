@@ -26,16 +26,16 @@
   },
   "dependencies": {
     "chalk": "^4.1.0",
-    "commander": "^5.1.0",
+    "commander": "^6.0.0",
     "mkdirp": "^1.0.4",
-    "moment": "^2.26.0",
-    "puppeteer": "^4.0.0",
+    "moment": "^2.27.0",
+    "puppeteer": "^5.2.1",
     "sanitize-filename": "^1.6.3",
     "stream-to-string": "^1.2.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mocha": "^8.0.1",
     "nyc": "^15.1.0",
     "proxyquire": "^2.1.3",

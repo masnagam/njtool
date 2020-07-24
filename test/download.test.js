@@ -12,8 +12,8 @@ const expect = chai.expect;
 chai.use(require('sinon-chai'));
 
 // Classes below are used for making stubs
-const { Browser } = require('puppeteer/lib/Browser');
-const { Page } = require('puppeteer/lib/Page');
+const { Browser } = require('puppeteer/lib/cjs/puppeteer/common/Browser');
+const { Page } = require('puppeteer/lib/cjs/puppeteer/common/Page');
 
 // Stubs
 const stubs = {
